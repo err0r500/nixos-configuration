@@ -16,11 +16,27 @@
      wget 
      vim
      tmux
+     zsh
      xterm
      tree
-     docker
-   ] ++ (import ./binaries.nix) ;
+     jq
+     yq
+     unzip
+     htop
 
+     docker
+     awscli
+     kubectl
+
+     chezmoi
+     bitwarden-cli
+
+     plantuml
+     tla
+     tlaplusToolbox
+
+     evince
+   ] ++ (import ./binaries.nix) ;
 
 
   # services
@@ -43,7 +59,7 @@
     };
   };
 
-  services.openssh = {
+  services.openssh = { #todo: remove this on the laptop
     enable = true;
     passwordAuthentication = false;
     permitRootLogin = "no";
@@ -51,8 +67,14 @@
   };
 
   # virtualisation
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = false;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
+
+  virtualisation.libvirtd = { 
+    enable = false; # to enable on the laptop
+  };
 
   # users
   users.mutableUsers = false;
