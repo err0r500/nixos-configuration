@@ -6,7 +6,7 @@ pkgs:
       src = pkgs.fetchurl {
         inherit url sha256;
       };
-      nativeBuildInputs = [ unzip ];
+      depsBuildBuild = [ unzip ];
       sourceRoot = ".";
       installPhase = ''
         mkdir -p $out/bin

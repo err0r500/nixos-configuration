@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  unstableChannel =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+in
 {
   imports =
     [ 
@@ -14,7 +19,15 @@
   # sound
   sound.enable = true;
 
-  nixpkgs.config.allowUnfree = true; # for slack
+  nixpkgs.config = {
+    allowUnfree = true; # for slack
+    packageOverrides = pkgs: {
+      unstable = import unstableChannel {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+
   # packages
   environment.systemPackages = with pkgs; [
     xterm
@@ -30,10 +43,21 @@
     yq
     htop
     arandr
+    brave
+    vscode
 
     wget 
     
     nodejs-12_x
+    go
+    ghc
+    stack
+    cabal-install
+
+    icu
+    ncurses
+    zlib
+    pcre
 
     docker
     awscli

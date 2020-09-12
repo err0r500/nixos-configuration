@@ -3,6 +3,7 @@ let
   hashicorpReleases = import ./hashicorpReleases.nix pkgs;
   directBin = import ./directBinary.nix pkgs;
   directZip = import ./directZip.nix pkgs;
+  directGZip = import ./directGZip.nix pkgs;
 in 
   let 
     terraform = pkgs.stdenv.mkDerivation (hashicorpReleases {
@@ -34,6 +35,13 @@ in
       sha256 = "0nw5gdhd6an6k9apgzpsncx9m3n4naw760wbgl8b3m7wwhx7sf0v";
       url = "https://releases.hashicorp.com/terraform-ls/0.7.0/terraform-ls_0.7.0_linux_amd64.zip";
     });
+
+    haskell-language-server = pkgs.stdenv.mkDerivation (directGZip {
+      name = "haskell-language-server";
+      sha256 = "0d4lwfy3ywrmz5qppzq11khk9n9744zrmgp5nl618dcl5di1w0aa";
+      url = "https://github.com/haskell/haskell-language-server/releases/download/0.4.0/haskell-language-server-Linux-8.6.5.gz";
+    });
+
   
   in [
   terraform 
@@ -41,4 +49,5 @@ in
   vagrant
   kind
   terraform-ls
+  #haskell-language-server
   ]
