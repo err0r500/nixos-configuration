@@ -11,36 +11,55 @@
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;
 
+  # sound
+  sound.enable = true;
+
+  nixpkgs.config.allowUnfree = true; # for slack
   # packages
   environment.systemPackages = with pkgs; [
-     wget 
-     vim
-     tmux
-     zsh
-     xterm
-     tree
-     jq
-     yq
-     unzip
-     htop
+    xterm
+    zsh
+    oh-my-zsh
+    neovim
+    tmux
 
-     docker
-     awscli
-     kubectl
+    tree
+    feh
+    unzip
+    jq
+    yq
+    htop
+    arandr
 
-     chezmoi
-     bitwarden-cli
+    wget 
+    
+    nodejs-12_x
 
-     plantuml
-     tla
-     tlaplusToolbox
+    docker
+    awscli
+    kubectl
 
-     evince
-   ] ++ (import ./binaries.nix) ;
+    chezmoi
+    bitwarden-cli
 
+    plantuml
+    tla
+    tlaplusToolbox
+
+    evince
+    slack-dark
+  ] ++ (import ./binaries.nix) ;
+
+  programs.vim.defaultEditor = true;
+  programs.tmux.extraConfig = "set -g escape-time 0";
+
+  fonts.fonts = with pkgs; [
+    fira-code
+    source-code-pro
+  ];
 
   # services
-   services.xserver = {
+  services.xserver = {
     enable = true;
     desktopManager = {
       xterm.enable = false;
@@ -55,6 +74,7 @@
         i3status
         i3lock
         i3blocks
+        networkmanagerapplet
      ];
     };
   };
@@ -78,6 +98,7 @@
 
   # users
   users.mutableUsers = false;
+  users.defaultUserShell = pkgs.zsh;
 
   users.users.matth = {
     isNormalUser = true;
@@ -86,6 +107,7 @@
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICI5k26MHX9PcP71ceVSmQ4/jSVxjCc2ULSP4dAJyvwi matth@Host-001"];
   };
 
-  system.stateVersion = "20.03"; # Did you read the comment?
+
+  system.stateVersion = "20.03";
 }
 
