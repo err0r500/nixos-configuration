@@ -36,11 +36,18 @@ in
       url = "https://releases.hashicorp.com/terraform-ls/0.7.0/terraform-ls_0.7.0_linux_amd64.zip";
     });
 
+    haskell-language-server-wrapper = pkgs.stdenv.mkDerivation (directGZip {
+      name = "haskell-language-server-wrapper";
+      sha256 = "026hmd6c8ilf7p5h3rk63ywd358hm0xbmniplnkdfilgri3j26sm";
+      url = "https://github.com/haskell/haskell-language-server/releases/download/0.4.0/haskell-language-server-wrapper-Linux.gz";
+    });
+
     haskell-language-server = pkgs.stdenv.mkDerivation (directGZip {
       name = "haskell-language-server";
       sha256 = "0d4lwfy3ywrmz5qppzq11khk9n9744zrmgp5nl618dcl5di1w0aa";
       url = "https://github.com/haskell/haskell-language-server/releases/download/0.4.0/haskell-language-server-Linux-8.6.5.gz";
     });
+
 
   
   in [
@@ -49,5 +56,6 @@ in
   vagrant
   kind
   terraform-ls
-  #haskell-language-server
+ # haskell-language-server-wrapper
+ # haskell-language-server
   ]

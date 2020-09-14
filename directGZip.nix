@@ -7,9 +7,6 @@ pkgs:
         inherit url sha256;
       };
       phases = [ "installPhase" ];
-      nativeBuildInputs = [
-        autoPatchelfHook # Automatically setup the loader, and do the magic
-      ];
       installPhase = ''
         mkdir -p $out/bin
         gzip -dc $src > $out/bin/${name}

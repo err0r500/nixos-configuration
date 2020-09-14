@@ -21,11 +21,12 @@ in
 
   nixpkgs.config = {
     allowUnfree = true; # for slack
-    packageOverrides = pkgs: {
-      unstable = import unstableChannel {
-        config = config.nixpkgs.config;
-      };
-    };
+    #allowBroken = true; # for unstable hls...
+    #packageOverrides = pkgs: {
+    #  unstable = import unstableChannel {
+    #    config = config.nixpkgs.config;
+    #  };
+    #};
   };
 
   # packages
@@ -35,6 +36,8 @@ in
     oh-my-zsh
     neovim
     tmux
+    ripgrep
+    fzf
 
     tree
     feh
@@ -53,6 +56,7 @@ in
     ghc
     stack
     cabal-install
+    haskellPackages.ghcide
 
     icu
     ncurses
