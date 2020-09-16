@@ -21,12 +21,6 @@ in
 
   nixpkgs.config = {
     allowUnfree = true; # for slack
-    #allowBroken = true; # for unstable hls...
-    #packageOverrides = pkgs: {
-    #  unstable = import unstableChannel {
-    #    config = config.nixpkgs.config;
-    #  };
-    #};
   };
 
   # packages
@@ -50,18 +44,16 @@ in
     vscode
 
     wget 
+    openssl
+    dnsutils
+    python38Packages.yamllint
     
-    nodejs-12_x
     go
     ghc
     stack
     cabal-install
     haskellPackages.ghcide
-
-    icu
-    ncurses
-    zlib
-    pcre
+    nodejs-12_x
 
     docker
     awscli
@@ -121,7 +113,7 @@ in
   };
 
   virtualisation.libvirtd = { 
-    enable = false; # to enable on the laptop
+    enable = false; # todo: enable this on the laptop
   };
 
   # users
