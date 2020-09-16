@@ -40,6 +40,7 @@ in
     yq
     htop
     arandr
+    ranger
     brave
     vscode
 
@@ -123,7 +124,7 @@ in
   users.users.matth = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; 
-    hashedPassword = "$6$B5ISrw/jHaJPXFAm$SZqgWIyVPaw4EIHd0rNX1r9q3Qb9VUFmiVPGytBDZyTNsebpsuskiK0lk0fG/vb5oAyzgfpRL332qLUhs7p120"; # just matth again for configuration purposes
+    hashedPassword = "$6$2VBLDVwDCb29PGgw$qF9qkunch/uYI2ELmlUzRyUHnYS5KbfOf3pXdvg836aZwbcVlH1omJdhARuK.R3W5KKJlSNujkeDN3vmP06ZU0"; 
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICI5k26MHX9PcP71ceVSmQ4/jSVxjCc2ULSP4dAJyvwi matth@Host-001"];
   };
 
