@@ -15,6 +15,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;
+  time.timeZone = "Europe/Paris";
 
   # sound
   sound.enable = true;
@@ -29,6 +30,7 @@ in
     zsh
     oh-my-zsh
     neovim
+    wget 
     tmux
     ripgrep
     fzf
@@ -43,33 +45,17 @@ in
     ranger
     brave
     vscode
-
-    wget 
-    openssl
-    dnsutils
     python38Packages.yamllint
-    
-    go
-    ghc
-    stack
-    cabal-install
-    haskellPackages.ghcide
-    nodejs-12_x
-
     docker
-    awscli
-    kubectl
-
     chezmoi
     bitwarden-cli
+    
+    nodejs-12_x # needed for coc.nvim
 
     plantuml
-    tla
-    tlaplusToolbox
-
     evince
     slack-dark
-  ] ++ (import ./binaries.nix) ;
+  ]; # ++ (import ./binaries.nix) ;
 
   programs.vim.defaultEditor = true;
   programs.tmux.extraConfig = "set -g escape-time 0";

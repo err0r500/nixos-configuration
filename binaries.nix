@@ -1,9 +1,9 @@
 let
   pkgs = import <nixpkgs> {};
-  hashicorpReleases = import ./hashicorpReleases.nix pkgs;
-  directBin = import ./directBinary.nix pkgs;
-  directZip = import ./directZip.nix pkgs;
-  directGZip = import ./directGZip.nix pkgs;
+  hashicorpReleases = import ./helpers/hashicorpReleases.nix pkgs;
+  directBin = import ./helpers/directBinary.nix pkgs;
+  directZip = import ./helpers/directZip.nix pkgs;
+  directGZip = import ./helpers/directGZip.nix pkgs;
 in 
   let 
     terraform = pkgs.stdenv.mkDerivation (hashicorpReleases {
@@ -48,6 +48,12 @@ in
       url = "https://github.com/haskell/haskell-language-server/releases/download/0.4.0/haskell-language-server-Linux-8.6.5.gz";
     });
 
+   elm = pkgs.stdenv.mkDerivation (directGZip {
+      name = "elm";
+      sha256 = "0p0m1xn4s4rk73q19fz1bw8qwhm6j3cqkrbq6jbmlwkzn8mzajp4";
+      url = "https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz";
+    });
+
 
   
   in [
@@ -56,6 +62,7 @@ in
   vagrant
   kind
   terraform-ls
+  elm
  # haskell-language-server-wrapper
  # haskell-language-server
   ]
