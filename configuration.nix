@@ -16,6 +16,7 @@ in
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;
   time.timeZone = "Europe/Paris";
+  
 
   # sound
   sound.enable = true;
@@ -68,6 +69,9 @@ in
   # services
   services.xserver = {
     enable = true;
+    layout = "us";
+    xkbVariant = "altgr-intl";
+
     desktopManager = {
       xterm.enable = false;
     };
