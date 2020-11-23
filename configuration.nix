@@ -9,6 +9,7 @@ in
   imports =
     [ 
       ./hardware-configuration.nix
+      ./cachix.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -118,7 +119,6 @@ in
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICI5k26MHX9PcP71ceVSmQ4/jSVxjCc2ULSP4dAJyvwi matth@Host-001"];
   };
 
-
-  system.stateVersion = "20.03";
+  system.stateVersion = "20.09";
 }
 
