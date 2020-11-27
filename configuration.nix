@@ -72,6 +72,8 @@ in
     enable = true;
     layout = "us";
     xkbVariant = "altgr-intl";
+    xkbOptions = "ctrl:nocaps";
+
 
     desktopManager = {
       xterm.enable = false;
@@ -114,7 +116,7 @@ in
 
   users.users.matth = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; 
+    extraGroups = [ "wheel" "docker" ]; 
     hashedPassword = "$6$2VBLDVwDCb29PGgw$qF9qkunch/uYI2ELmlUzRyUHnYS5KbfOf3pXdvg836aZwbcVlH1omJdhARuK.R3W5KKJlSNujkeDN3vmP06ZU0"; 
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICI5k26MHX9PcP71ceVSmQ4/jSVxjCc2ULSP4dAJyvwi matth@Host-001"];
   };
